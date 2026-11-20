@@ -35,6 +35,16 @@ $generic-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 
 $generic-border: 1px solid #f1f1f1;
 $generic-bg: #db4c3f;
 
+// Dark mode variables
+$dark-bg-primary:   #1e1e1e;
+$dark-bg-secondary: #252525;
+$dark-bg-elevated:  #2f2f2f;
+$dark-bg-hover:     #3a3a3a;
+$dark-border:       #3d3d3d;
+$dark-text-primary: #e8e8e8;
+$dark-text-muted:   #9e9e9e;
+$dark-header-bg:    #282828;
+
 /* Mixins
   ============================================ */
 @mixin box-overlay() {
@@ -135,11 +145,200 @@ $generic-bg: #db4c3f;
 /* Darkmode
   ============================================ */
 .darkmode {
+  // Page background
+  background-color: $dark-bg-primary;
+
+  // Header
   header {
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
-    background-color: #282828;
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.3);
+    background-color: $dark-header-bg;
     border-color: transparent;
+  }
+
+  // Sidebar
+  .sidebar {
+    background-color: $dark-bg-secondary;
+    border-right: 1px solid $dark-border;
+
+    &__middle {
+      border-bottom: 1px solid $dark-border;
+
+      span {
+        color: $dark-text-muted;
+      }
+
+      h2 {
+        color: $dark-text-primary;
+      }
+    }
+
+    &__generic li {
+      color: $dark-text-primary;
+
+      span:first-of-type svg {
+        color: $dark-text-muted;
+      }
+
+      &.active,
+      &:hover {
+        background-color: $dark-bg-hover;
+      }
+    }
+
+    &__project {
+      color: $dark-text-primary;
+
+      &.active,
+      &:hover {
+        background-color: $dark-bg-hover;
+        font-weight: bold;
+      }
+
+      &-delete svg {
+        color: $dark-text-muted;
+      }
+    }
+  }
+
+  // Tasks panel
+  .tasks {
+    background-color: $dark-bg-secondary;
+    border-right: 1px solid $dark-border;
+
+    h2 {
+      color: $dark-text-primary;
+    }
+
+    &__list li {
+      color: $dark-text-primary;
+      border-bottom: 1px solid $dark-border;
+
+      &:hover {
+        background-color: $dark-bg-hover;
+      }
+
+      .checkbox-holder .checkbox {
+        border-color: $dark-text-muted;
+      }
+    }
+  }
+
+  // Add task (inline shallow)
+  .add-task {
+    &__shallow {
+      .add-task__text {
+        color: $dark-text-muted;
+      }
+    }
+
+    &__content {
+      background-color: $dark-bg-elevated !important;
+      border: 1px solid $dark-border;
+      color: $dark-text-primary;
+
+      &::placeholder {
+        color: $dark-text-muted;
+      }
+    }
+
+    &__cancel {
+      color: $dark-text-muted;
+    }
+
+    // Quick-add overlay
+    &__overlay {
+      background: rgba(0, 0, 0, 0.7);
+
+      .add-task__main {
+        background-color: $dark-bg-elevated;
+
+        .header {
+          color: $dark-text-primary;
+        }
+      }
+
+      .add-task__cancel-x {
+        color: $dark-text-muted;
+      }
+    }
+
+    &__project,
+    &__date {
+      color: $dark-text-muted;
+    }
+  }
+
+  // Add project
+  .add-project {
+    .add-project__text {
+      color: $dark-text-muted;
+    }
+
+    &__name {
+      background-color: $dark-bg-elevated !important;
+      border: 1px solid $dark-border;
+      color: $dark-text-primary;
+
+      &::placeholder {
+        color: $dark-text-muted;
+      }
+    }
+
+    &__cancel {
+      color: $dark-text-muted;
+    }
+  }
+
+  // Project delete modal
+  .project-delete-modal__inner {
+    background-color: $dark-bg-elevated;
+    -webkit-box-shadow: rgba(0,0,0,0.4) 0px 0px 0px 1px, rgba(0,0,0,0.3) 0px 4px 11px;
+            box-shadow: rgba(0,0,0,0.4) 0px 0px 0px 1px, rgba(0,0,0,0.3) 0px 4px 11px;
+
+    p {
+      color: $dark-text-primary;
+    }
+
+    span {
+      color: $dark-text-muted;
+    }
+  }
+
+  // Task date overlay
+  .task-date {
+    background-color: $dark-bg-elevated;
+    -webkit-box-shadow: rgba(0,0,0,0.4) 0px 0px 0px 1px, rgba(0,0,0,0.3) 0px 4px 11px;
+            box-shadow: rgba(0,0,0,0.4) 0px 0px 0px 1px, rgba(0,0,0,0.3) 0px 4px 11px;
+
+    &__list li {
+      color: $dark-text-primary;
+      border-bottom: 1px solid $dark-border;
+
+      &:hover {
+        background-color: $dark-bg-hover;
+      }
+
+      svg {
+        fill: $dark-text-muted;
+      }
+    }
+  }
+
+  // Project overlay
+  .project-overlay {
+    background-color: $dark-bg-elevated;
+    -webkit-box-shadow: rgba(0,0,0,0.4) 0px 0px 0px 1px, rgba(0,0,0,0.3) 0px 4px 11px;
+            box-shadow: rgba(0,0,0,0.4) 0px 0px 0px 1px, rgba(0,0,0,0.3) 0px 4px 11px;
+
+    &__list li {
+      color: $dark-text-primary;
+      border-bottom: 1px solid $dark-border;
+
+      &:hover {
+        background-color: $dark-bg-hover;
+      }
+    }
   }
 }
 

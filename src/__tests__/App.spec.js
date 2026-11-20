@@ -2,7 +2,10 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { App } from '../App';
 
-beforeEach(cleanup); // clean meeeeeeeeee!
+beforeEach(() => {
+  cleanup(); // clean meeeeeeeeee!
+  localStorage.clear();
+});
 
 describe('<App />', () => {
   it('renders the application', () => {
