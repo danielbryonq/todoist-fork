@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPizzaSlice } from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { AddTask } from '../AddTask';
 
@@ -31,11 +31,11 @@ export const Header = ({ darkMode, setDarkMode }) => {
             <li className="settings__darkmode">
               <button
                 data-testid="dark-mode-action"
-                aria-label="Darkmode on/off"
+                aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
               >
-                <FaPizzaSlice />
+                {darkMode ? <FaSun /> : <FaMoon />}
               </button>
             </li>
           </ul>
